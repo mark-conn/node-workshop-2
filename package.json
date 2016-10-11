@@ -1,0 +1,23 @@
+{
+  "name": "json-request",
+  "version": "1.0.0",
+  "description": "json request function",
+  "main": "request-as-json.js",
+  "dependencies": {
+    "request": "^2.75.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mark-conn/node-workshop-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mark-conn/node-workshop-2/issues"
+  },
+  "homepage": "https://github.com/mark-conn/node-workshop-2#readme"
+}
