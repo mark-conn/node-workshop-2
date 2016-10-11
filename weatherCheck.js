@@ -33,11 +33,10 @@ colour.mode = 'console';
 function convertIcon(obj) {
                          switch(obj.icon) {
                              case 'partly-cloudy-night':
-                                return'umbrella';
+                                return'cloud';
                             case 'rain':
                                 return 'umbrella';
-                            case 'partly-cloudy-night':
-                                return 'cloud';
+
                             case 'partly-cloudy-day':
                                return'sun_small_cloud';
                             case 'clear-day':
