@@ -25,9 +25,12 @@
 var prompt = require('prompt');
 var request = require('./request-json.js').requestJson;
 var emoji = require('node-emoji');
+var Table = require('cli-table');
+var moment = require('moment');
+var colour = require('colour');
+colour.mode = 'console'; 
 
-
- function convertIcon(obj) {
+function convertIcon(obj) {
                          switch(obj.icon) {
                              case 'partly-cloudy-night':
                                 return'umbrella';
@@ -45,6 +48,9 @@ var emoji = require('node-emoji');
                                 return 'eggplant'
                          }
                      }
+                    
+                     var table = new Table ({ head: ["", "Weather".green, "Icon".blue, "Max Temp °F".red] });
+                                    
 
 
 prompt.get('city', function(err, input){
@@ -70,20 +76,24 @@ prompt.get('city', function(err, input){
                  else {
                      var dailyArr;
                      dailyArr = input.daily.data, null, 4;
-                     dailyArr.forEach(function(obj){
+                                    
+                        dailyArr.forEach(function(obj){
                          
-                         var dayOfWeek = new Date(obj.time * 1000);   
-                         console.log(dayOfWeek, obj.icon, emoji.get(convertIcon(obj)));
-                         
+                         var dayOfWeek = new Date(obj.time * 1000);
+                         var formattedDay = moment(dayOfWeek).format('dddd');
+                         var maxTemp = obj.temperatureMax.toString();
+                         var weatherWord = obj.icon.toString();
+                 
+                             table.push({ [formattedDay]: [weatherWord.cyan, emoji.get(convertIcon(obj)), maxTemp.rainbow] }
+                             
+                             )
                      })
-                 
-
+                  
+                     console.log(table.toString());
                   }
-                 
              })
           }
        })
-       
     }
 })
     
