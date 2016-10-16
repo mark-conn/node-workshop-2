@@ -28,4 +28,4 @@ function requestJson(url, cb) {
              }
     });
 }
-
+exports.requestJson = requestJson;
